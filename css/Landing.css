@@ -27,6 +27,7 @@
 	margin-top: 12px;
 	padding: 4px 6px;
 	width: fit-content;
+	width: -moz-fit-content;
 }
 
 .Landing .Info .ContactButton:hover {
