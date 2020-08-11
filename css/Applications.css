@@ -1,0 +1,37 @@
+.Applications {
+	font-size: 20px;
+	height: 100vh;
+	overflow: hidden;
+	position: relative;
+	width: 100vw;
+}
+
+.Applications .Application {
+	font-size: 18px;
+	margin: 4px 0;
+	padding: 4px;
+}
+
+.Applications .Content {
+	background: white;
+	left: 16vw;
+	margin-top: 10vh;
+	position: absolute;
+	z-index: 1;
+}
+
+.Applications canvas {
+	position: absolute;
+	left: 20vw;
+	top: 0;
+}
+
+.Applications .Industries {
+	margin-bottom: 40px;
+}
+
+.Applications .Title {
+	font-size: 44px;
+	font-weight: 300;
+	margin-bottom: 40px;
+}

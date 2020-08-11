@@ -1,0 +1,56 @@
+.WhatWeDo {
+	position: relative;
+	height: 100vh;
+	margin-bottom: 50vh;
+	max-height: 100vh;
+	overflow: hidden;
+	width: 100vw;
+	z-index: 1;
+}
+
+.WhatWeDo canvas {
+	position: absolute;
+	left: -16vw;
+}
+
+.WhatWeDo .Content {
+	background: white;
+	margin-top: 9vh;
+	padding-left: 10px;
+	position: absolute;
+	left: 55vw;
+	top: 0;
+	width: fit-content;
+	z-index: 2;
+}
+
+.WhatWeDo .Title {
+	font-size: 44px;
+	font-weight: 300;
+	margin-bottom: 6vh;
+}
+
+.WhatWeDo .Service {
+	font-size: 18px;
+	height: 200px;
+	margin-right: 4vw;
+	width: fit-content;
+}
+
+.WhatWeDo .Service .Type {
+	font-size: 26px;
+	font-weight: 400;
+}
+
+.WhatWeDo .Service .Description {
+	color: #38398e;
+	font-size: 20px;
+	font-weight: 400;
+	line-height: 23px;
+	margin: 7px 0;
+	white-space: pre-line;
+}
+
+.WhatWeDo .Service .Example {
+	margin-bottom: 5px;
+}

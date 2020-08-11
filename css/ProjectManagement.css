@@ -1,0 +1,35 @@
+.ProjectManagement {
+	height: 100vh;
+	margin-top: 40vh;
+	position: relative;
+	width: 100vw;
+}
+
+.ProjectManagement .FlexBox {
+	align-items: flex-start;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	margin: 0 4vw;
+}
+
+.ProjectManagement .FlexBox .Stage {
+	margin-top: 20px;
+	width: 300px;
+}
+
+.ProjectManagement .FlexBox .Goal {
+	font-size: 20px;
+	font-weight: 400;
+}
+
+.ProjectManagement .FlexBox .Stage .Step {
+	margin: 4px 0;
+}
+
+.ProjectManagement .Title {
+	font-size: 44px;
+	font-weight: 300;
+	margin-bottom: 40px;
+	margin-left: 4vw;
+}

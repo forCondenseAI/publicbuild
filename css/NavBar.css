@@ -1,0 +1,73 @@
+.NavBar {
+	color: black;
+	height: 60px;
+	margin-left: calc(4vw - 12px);
+	position: fixed;
+	top: 0;
+	z-index: 10;
+}
+
+.NavBar .MenuIcon {
+	background: white;
+	float: left;
+	height: 36px;
+	padding-top: 19px;
+	width: 50px;
+}
+
+.NavBar .MenuIcon:hover {
+	cursor: pointer;
+}
+
+.NavBar .MenuIcon div {
+	background: black;
+	float: left;
+	height: 1px;
+	margin: 3px 12px 3px 12px;
+	transition: 0.2s;
+	width: 26px;
+}
+
+.NavBar .Change .Bar1 {
+	-webkit-transform: rotate(-45deg) translate(-5px, 5px);
+	transform: rotate(-45deg) translate(-5px, 5px);
+}
+
+.NavBar .Change .Bar2 {
+	opacity: 0;
+}
+
+.NavBar .Change .Bar3 {
+	-webkit-transform: rotate(45deg) translate(-4px, -5px);
+	transform: rotate(45deg) translate(-4px, -5px);
+}
+
+.NavBarSections {
+	background: white;
+	float: left;
+	overflow: hidden;
+	width: 0;
+}
+
+.NavBarSections div {
+	display: inline-block;
+	line-height: 60px;
+	padding: 0 8px;
+	width: fit-content;
+}
+
+.NavBarSections div:hover {
+	cursor: pointer;
+	text-decoration: underline;
+}
+
+.Show {
+	overflow: auto;
+	width: fit-content;
+}
+
+@media only screen and (max-width: 800px) {
+	.NavBar {
+    margin-left: 0;
+  }
+}

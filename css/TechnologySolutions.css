@@ -1,0 +1,15 @@
+.TechnologySolutions {
+	height: 100vh;
+	width: 100vw;
+}
+
+.TechnologySolutions .Section {
+	height: 20vh;
+}
+
+.TechnologySolutions .Title {
+	font-size: 36px;
+	line-height: 40vh;
+	text-align: center;
+	width: 400px;
+}

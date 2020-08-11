@@ -1,0 +1,16 @@
+.Contact {
+	/* margin: 33vh auto 33vw auto; */
+	height: 66vh;
+	text-align: center;
+	width: 100vw;
+}
+
+.Contact .Content {
+	margin: 33vh auto 0 auto;
+}
+
+.Contact .Title {
+	font-size: 32px;
+	font-weight: 400;
+	margin-bottom: 8px;
+}

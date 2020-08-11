@@ -1,0 +1,43 @@
+.Demos .FlexBox {
+	align-items: flex-start;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+}
+
+.Demos .FlexBox .Description {
+	font-size: 16px;
+	line-height: 22px;
+	margin-top: 20px;
+	width: 300px;
+}
+
+.Demos .FlexBox .Image {
+	margin-top: calc(52px + 8vh + 100px);
+}
+
+.Demos .FlexBox .Image img {
+	height: auto;
+	width: 300px;
+}
+
+.Demos .FlexBox .Text {
+	margin-top: calc(52px + 8vh + 200px);
+}
+
+.Demos .FlexBox .Text .TextBox {
+	border: 1px solid black;
+	height: 308px;
+	width: 300px;
+}
+
+.Demos .Title {
+	font-size: 44px;
+	font-weight: 300;
+	margin-bottom: 8vh;
+}
+
+.Demos .Service {
+	font-size: 24px;
+	margin-bottom: 20px;
+}
