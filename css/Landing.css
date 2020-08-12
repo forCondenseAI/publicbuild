@@ -1,9 +1,9 @@
 .Landing {
 	height: 100vh;
-	margin-bottom: 50vh;
-	overflow: hidden;
-	width: 100vw;
 	max-width: 100vw;
+	overflow: hidden;
+	scroll-snap-align: center;
+	width: 100vw;
 	z-index: 1;
 }
 

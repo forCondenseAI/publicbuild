@@ -1,8 +1,13 @@
+.DemoVideo, .DemoImage, .DemoText {
+	height: 100vh;
+	scroll-snap-align: center;
+}
+
 #Demos .FlexBox {
 	align-items: baseline;
 	display: flex;
 	flex-wrap: wrap;
-	padding-top: 25vh;
+	/* padding-top: 25vh; */
 	justify-content: space-evenly;
 }
 

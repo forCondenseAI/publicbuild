@@ -1,8 +1,9 @@
 .ProjectManagement {
 	height: 100vh;
-	margin-top: 40vh;
 	position: relative;
+	scroll-snap-align: center;
 	width: 100vw;
+
 }
 
 .ProjectManagement .FlexBox {

@@ -1,12 +1,8 @@
 .Contact {
-	/* margin: 33vh auto 33vw auto; */
-	height: 66vh;
+	height: 100vh;
+	scroll-snap-align: center;
 	text-align: center;
 	width: 100vw;
-}
-
-.Contact .Content {
-	margin: 33vh auto 0 auto;
 }
 
 .Contact .Title {

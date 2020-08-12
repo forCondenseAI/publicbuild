@@ -3,6 +3,7 @@
 	height: 100vh;
 	overflow: hidden;
 	position: relative;
+	scroll-snap-align: center;
 	width: 100vw;
 }
 
@@ -14,7 +15,7 @@
 
 .Applications .Content {
 	background: white;
-	left: 16vw;
+	left: 12.5vw;
 	margin-top: 10vh;
 	position: absolute;
 	z-index: 1;
@@ -22,7 +23,7 @@
 
 .Applications canvas {
 	position: absolute;
-	left: 20vw;
+	left: 25vw;
 	top: 0;
 }
 
