@@ -8,7 +8,6 @@
 }
 
 .NavBar .MenuIcon {
-	background: white;
 	float: left;
 	height: 36px;
 	padding-top: 19px;
@@ -26,6 +25,10 @@
 	margin: 3px 12px 3px 12px;
 	transition: 0.2s;
 	width: 26px;
+}
+
+.NavBar .Change {
+	background: white;
 }
 
 .NavBar .Change .Bar1 {
@@ -49,14 +52,16 @@
 	width: 0;
 }
 
-.NavBarSections div {
+.NavBarSections a {
+	color: black;
 	display: inline-block;
 	line-height: 60px;
 	padding: 0 8px;
+	text-decoration: none;
 	width: fit-content;
 }
 
-.NavBarSections div:hover {
+.NavBarSections a:hover {
 	cursor: pointer;
 	text-decoration: underline;
 }

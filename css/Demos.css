@@ -1,43 +1,86 @@
-.Demos .FlexBox {
-	align-items: flex-start;
+#Demos .FlexBox {
+	align-items: baseline;
 	display: flex;
 	flex-wrap: wrap;
+	padding-top: 25vh;
 	justify-content: space-evenly;
 }
 
-.Demos .FlexBox .Description {
+#Demos .FlexBox .ChooseFile {
+	margin-bottom: 20px;
+}
+
+#Demos .FlexBox .Content {
+	width: 400px;
+}
+
+#Demos .FlexBox .Description {
 	font-size: 16px;
-	line-height: 22px;
-	margin-top: 20px;
-	width: 300px;
+	line-height: 24px;
+	margin-bottom: 20px;
 }
 
-.Demos .FlexBox .Image {
-	margin-top: calc(52px + 8vh + 100px);
-}
-
-.Demos .FlexBox .Image img {
-	height: auto;
-	width: 300px;
-}
-
-.Demos .FlexBox .Text {
-	margin-top: calc(52px + 8vh + 200px);
-}
-
-.Demos .FlexBox .Text .TextBox {
+#Demos .FlexBox .GetStarted {
 	border: 1px solid black;
-	height: 308px;
-	width: 300px;
+	color: black;
+	font-size: 16px;
+	margin-top: 40px;
+	padding: 4px 6px;
+	text-decoration: none;
+	width: fit-content;
+	width: -moz-fit-content;
 }
 
-.Demos .Title {
-	font-size: 44px;
-	font-weight: 300;
-	margin-bottom: 8vh;
+#Demos .FlexBox .ImageUpload {
+	display: block;
 }
 
-.Demos .Service {
+#Demos .FlexBox img {
+	margin-bottom: 20px;
+	width: 400px;
+}
+
+#Demos .FlexBox .TextBox {
+	border: 1px solid black;
+	font-size: 18px;
+	height: 40px;
+	padding-left: 4px;
+	margin-bottom: 20px;
+	margin-top: 10px;
+	width: 400px;
+}
+
+#Demos .FlexBox .TextBoxSubmit {
+	display: block;
+}
+
+#Demos .Service {
 	font-size: 24px;
 	margin-bottom: 20px;
+}
+
+#Demos .Title {
+	font-size: 22px;
+	font-weight: 400;
+	margin-bottom: 20px;
+}
+
+#Demos .Type {
+	font-size: 22px;
+	font-weight: 400;
+	margin-bottom: 10px;
+}
+
+#Demos .ImageDemoWrapper {
+	position: relative;
+}
+
+#Demos .NewBox {
+	border: 1px solid red;
+	position: absolute;
+}
+
+#Demos .NewLabel {
+	line-height: 28px;
+	text-transform: capitalize;
 }

@@ -10,7 +10,7 @@
 
 .WhatWeDo canvas {
 	position: absolute;
-	left: -16vw;
+	left: -12vw;
 }
 
 .WhatWeDo .Content {
@@ -18,7 +18,7 @@
 	margin-top: 9vh;
 	padding-left: 10px;
 	position: absolute;
-	left: 55vw;
+	left: 60vw;
 	top: 0;
 	width: fit-content;
 	z-index: 2;
