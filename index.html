@@ -37,14 +37,18 @@
 					
 					Algorithmia.client('simXg+IFRCSOJhSTY2fs9rHrOzW1')
 						.algo('condense/object_detection/0.2.0?timeout=300')
-						.pipe(preview.src.split(',')[1]) // Base64 string, after the comma
-						.then(function (output) {
+						.pipe(reader.result.split(',')[1]) // Base64 string, after the comma
+						.then(async function (output) {
 							console.log(output)
+							preview.src = reader.result.split(',')[0] + "," + output.result.image
 
 							let addedLabels = {}
 
-							Object.values(output.result)
-								.forEach(model => {
+							preview.onload = function() {
+								Object.values(output.result)
+									.forEach(model => {
+									if (typeof model === 'string') return
+
 									model.forEach(entry => {
 										// Skip Duplicate Boxes
 										const entryKey = JSON.stringify(entry.coordinates)
@@ -56,10 +60,11 @@
 
 										// Rescale Absolute Coordinates for Displayed Image
 										let { x0, x1, y0, y1 } = entry.coordinates
-										x0 *= preview.width / preview.naturalWidth
-										x1 *= preview.width / preview.naturalWidth
-										y0 *= preview.height / preview.naturalHeight
-										y1 *= preview.height / preview.naturalHeight
+										x0 *= (preview.width / preview.naturalWidth)
+										x1 *= (preview.width / preview.naturalWidth)
+										y0 *= (preview.height / preview.naturalHeight)
+										y1 *= (preview.height / preview.naturalHeight)
+										console.log(preview.width, preview.naturalWidth, preview.height, preview.naturalHeight)
 
 										// Add New Box
 										let newBox = document.createElement("div")
@@ -84,6 +89,7 @@
 										document.getElementsByClassName('Demo')[1].appendChild(newLabel)
 									})
 								})
+							}
 						})   
 				}, false)
 
