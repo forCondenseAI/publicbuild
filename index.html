@@ -16,79 +16,80 @@
 		<script src="//algorithmia.com/v1/clients/js/algorithmia-0.2.1.js" type="text/javascript"></script>
 		<script>
 			function handleImageDemo() {
+				// Clear Previous Labels
+				const previousBoxes = document.getElementsByClassName('NewBox')
+				while (previousBoxes.length > 0) {
+					previousBoxes[0].parentNode.removeChild(previousBoxes[0])
+				}
+
+				const previousLabels = document.getElementsByClassName('NewLabel')
+				while (previousLabels.length > 0) {
+					previousLabels[0].parentNode.removeChild(previousLabels[0])
+				}
+
+				// Read Input File
 				let preview = document.getElementsByClassName('ImageUpload')[0]
 				const file = document.querySelector('input[type=file]').files[0]
 				const reader = new FileReader()
 
 				reader.addEventListener("load", function () {
-					// Clear Previous Labels
-					let previousBoxes = document.getElementsByClassName('NewBox')
-					while (previousBoxes.length) {
-						previousBoxes[0].parentNode.removeChild(previousBoxes[0])
-					}
-
-					let previousLabels = document.getElementsByClassName('NewLabel')
-					while (previousLabels.length) {
-						previousLabels[0].parentNode.removeChild(previousLabels[0])
-					}
-
 					// Display Uploaded File
-					preview.src = reader.result
+					// preview.src = JSON.stringify(reader.result)
 					
 					Algorithmia.client('simXg+IFRCSOJhSTY2fs9rHrOzW1')
 						.algo('condense/object_detection/0.2.0?timeout=300')
 						.pipe(reader.result.split(',')[1]) // Base64 string, after the comma
-						.then(async function (output) {
+						.then(output => {
 							console.log(output)
 							preview.src = reader.result.split(',')[0] + "," + output.result.image
-
-							let addedLabels = {}
+							document.getElementsByClassName('Labels')[0].style.maxHeight = preview.height
 
 							preview.onload = function() {
-								Object.values(output.result)
-									.forEach(model => {
-									if (typeof model === 'string') return
+								Object.entries(output.result)
+									.forEach(([modelName, modelLabels]) => {
+										if (modelName === 'image') return
 
-									model.forEach(entry => {
-										// Skip Duplicate Boxes
-										const entryKey = JSON.stringify(entry.coordinates)
-										if (entryKey in addedLabels) {
-											return
-										} else {
-											addedLabels[entryKey] = 1
-										}
+										modelLabels.forEach(entry => {
+											// Rescale Absolute Coordinates for Displayed Image
+											let { x0, x1, y0, y1 } = entry.coordinates
 
-										// Rescale Absolute Coordinates for Displayed Image
-										let { x0, x1, y0, y1 } = entry.coordinates
-										x0 *= (preview.width / preview.naturalWidth)
-										x1 *= (preview.width / preview.naturalWidth)
-										y0 *= (preview.height / preview.naturalHeight)
-										y1 *= (preview.height / preview.naturalHeight)
-										console.log(preview.width, preview.naturalWidth, preview.height, preview.naturalHeight)
+											if (modelName === 'car_make_and_model') {
+												x0 = entry.coordinates.y0
+												x1 = entry.coordinates.y1
+												y0 = entry.coordinates.x0
+												y1 = entry.coordinates.x1
+											}
 
-										// Add New Box
-										let newBox = document.createElement("div")
-										newBox.setAttribute('class', 'NewBox')
-										newBox.style.height = y1 - y0 + "px"
-										newBox.style.left = x0 + "px"
-										newBox.style.top = y0 + "px"
-										newBox.style.width = x1 - x0 + "px"
+											x0 *= (preview.width / preview.naturalWidth)
+											x1 *= (preview.width / preview.naturalWidth)
+											y0 *= (preview.height / preview.naturalHeight)
+											y1 *= (preview.height / preview.naturalHeight)
 
-										document.getElementsByClassName('ImageDemoWrapper')[0].appendChild(newBox)
+											// Add New Box
+											let newBox = document.createElement("div")
+											newBox.setAttribute('class', 'NewBox')
+											newBox.style.height = y1 - y0 + "px"
+											newBox.style.left = x0 + "px"
+											newBox.style.top = y0 + "px"
+											newBox.style.width = x1 - x0 + "px"
 
-										// Add Labels
-										let newLabel = document.createElement("div")
-										newLabel.setAttribute('class', 'NewLabel')
+											document.getElementsByClassName('ImageDemoWrapper')[0].appendChild(newBox)
 
-										if (typeof entry.label === 'object') {
-											newLabel.innerHTML = Math.round(100 * entry.confidence) + "% " + Object.values(entry.label).map(value => value).join(", ")
-										} else {
-											newLabel.innerHTML = Math.round(100 * entry.confidence) + "% " + entry.label
-										}
+											// Add Labels
+											let newLabel = document.createElement("div")
+											newLabel.setAttribute('class', 'NewLabel')
 
-										document.getElementsByClassName('Demo')[1].appendChild(newLabel)
+											if (modelName === 'alpr') {
+												newLabel.innerHTML = Math.round(100 * entry.confidence.ocr_score) + "% " + entry.label
+											} else if (typeof entry.label === 'object') {
+												newLabel.innerHTML = Math.round(100 * entry.confidence) + "% " + Object.values(entry.label).map(value => value).join(", ")
+											} else {
+												newLabel.innerHTML = Math.round(100 * entry.confidence) + "% " + entry.label
+											}
+
+											document.getElementsByClassName('Labels')[0].appendChild(newLabel)
+										})
 									})
-								})
 							}
 						})   
 				}, false)
@@ -265,7 +266,6 @@
 						<div class="Description">
 							Leveraging existing Image Classification and Detection Models, trained on ImageNet and Common Objects in Context. Along with FFMpeg we turn a video processing problem into an image processing problem.
 						</div>
-						<a href="#Contact" class="GetStarted">Get Started</a>
 					</div>
 				</div>
 			</div>
@@ -273,7 +273,6 @@
 				<div class="FlexBox">
 					<div class="Demo">
 						<div class="Title">Demo: Image Processing</div>
-						<input class="ChooseFile" type="file" accept="image/*" onchange="handleImageDemo()" />
 						<div class="ImageDemoWrapper">
 							<img class="ImageUpload" src="images/car.jpg" alt="ImagePreview" />
 							<div class="NewBox" style="height: 83.7987px; left: 316.8px; top: 243.924px; width: 110.933px;"></div>
@@ -282,6 +281,9 @@
 							<div class="NewBox" style="height: 151.051px; left: 52.8px; top: 232.715px; width: 281.6px;"></div>
 							<div class="NewBox" style="height: 64.5838px; left: 308.267px; top: 259.402px; width: 90.1333px;"></div>
 						</div>
+						<input class="ChooseFile" type="file" accept="image/*" onchange="handleImageDemo()" />
+					</div>
+					<div class="Labels">
 						<div class="NewLabel">22% Coupe, Chevrolet, Impala, 1965</div>
 						<div class="NewLabel">37% Convertible, Chevrolet, Bel Air, 1955</div>
 						<div class="NewLabel">88% person</div>
@@ -295,11 +297,12 @@
 							instagram model collaboration scoring - we have the tools and expertise to help you refine your business
 							objectives and help realise ROI.
 						</div>
+					</div>
+					<div class="Content">
 						<div class="Type">How</div>
 						<div class="Description">
 							This algorithm leverages several state-of-the-art object detection models trained on a variety of datasets such as: Common Objects In Context, ImageNet, ALPR, and a variety of proprietary data sources.
 						</div>
-						<a href="#Contact" class="GetStarted">Get Started</a>
 					</div>
 				</div>
 			</div>
@@ -327,7 +330,6 @@
 						<div class="Description">
 							Leveraging SpacyIO’s Natural Language processing packages, we’re able to leverage pretrained NLP transformer models (simliar to GPT-X) to be able to gather information automatically from natural language. This kind of system is a necessary first step for any chatbot / human - machine interface.
 						</div>
-						<a href="#Contact" class="GetStarted">Get Started</a>
 					</div>
 				</div>
 			</div>
