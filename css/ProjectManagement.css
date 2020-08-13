@@ -3,34 +3,42 @@
 	position: relative;
 	scroll-snap-align: center;
 	width: 100vw;
-
 }
 
-.ProjectManagement .FlexBox {
-	align-items: flex-start;
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
-	margin: 0 4vw;
+.ProjectManagement canvas {
+	position: absolute;
+	left: -20vw;
 }
 
-.ProjectManagement .FlexBox .Stage {
-	margin-top: 20px;
+.ProjectManagement .Content {
+	background: white;
+	margin-top: 9vh;
+	padding-left: 10px;
+	position: absolute;
+	right: 4vw;
+	top: 0;
+	width: fit-content;
+	z-index: 1;
+}
+
+.ProjectManagement .Goal {
+	font-size: 18px;
+	font-weight: 400;
+	margin-bottom: 5px;
+}
+
+.ProjectManagement .Stage {
+	background: white;
+	margin-bottom: 30px;
 	width: 300px;
 }
 
-.ProjectManagement .FlexBox .Goal {
-	font-size: 22px;
-	font-weight: 400;
-}
-
-.ProjectManagement .FlexBox .Stage .Step {
-	margin: 4px 0;
+.ProjectManagement .Stage .Step {
+	font-size: 16px;
+	margin-bottom: 5px;
 }
 
 .ProjectManagement .Title {
-	font-size: 44px;
-	font-weight: 300;
-	margin-bottom: 40px;
-	margin-left: 4vw;
+	font-size: 32px;
+	margin-bottom: 30px;
 }
