@@ -42,54 +42,57 @@
 						.then(output => {
 							console.log(output)
 							preview.src = reader.result.split(',')[0] + "," + output.result.image
-							document.getElementsByClassName('Labels')[0].style.maxHeight = preview.height
 
 							preview.onload = function() {
-								Object.entries(output.result)
-									.forEach(([modelName, modelLabels]) => {
-										if (modelName === 'image') return
+								
+								// Format Output Results
+								let newLabels = []
+								Object.entries(output.result).forEach(([modelName, modelLabels]) => {
+									if (modelName === 'car_make_and_model') return
+									if (modelName === 'image') return
+									
+									modelLabels.forEach(entry => {
+										// TODO: box_score vs ocr_score
+										if (modelName === 'alpr') {
+											entry.confidence = entry.confidence.ocr_score
+										}
 
-										modelLabels.forEach(entry => {
-											// Rescale Absolute Coordinates for Displayed Image
-											let { x0, x1, y0, y1 } = entry.coordinates
+										// Rescale Absolute Coordinates for Displayed Image
+										entry.coordinates.x0 *= (preview.width / preview.naturalWidth)
+										entry.coordinates.x1 *= (preview.width / preview.naturalWidth)
+										entry.coordinates.y0 *= (preview.height / preview.naturalHeight)
+										entry.coordinates.y1 *= (preview.height / preview.naturalHeight)
 
-											if (modelName === 'car_make_and_model') {
-												x0 = entry.coordinates.y0
-												x1 = entry.coordinates.y1
-												y0 = entry.coordinates.x0
-												y1 = entry.coordinates.x1
-											}
-
-											x0 *= (preview.width / preview.naturalWidth)
-											x1 *= (preview.width / preview.naturalWidth)
-											y0 *= (preview.height / preview.naturalHeight)
-											y1 *= (preview.height / preview.naturalHeight)
-
-											// Add New Box
-											let newBox = document.createElement("div")
-											newBox.setAttribute('class', 'NewBox')
-											newBox.style.height = y1 - y0 + "px"
-											newBox.style.left = x0 + "px"
-											newBox.style.top = y0 + "px"
-											newBox.style.width = x1 - x0 + "px"
-
-											document.getElementsByClassName('ImageDemoWrapper')[0].appendChild(newBox)
-
-											// Add Labels
-											let newLabel = document.createElement("div")
-											newLabel.setAttribute('class', 'NewLabel')
-
-											if (modelName === 'alpr') {
-												newLabel.innerHTML = Math.round(100 * entry.confidence.ocr_score) + "% " + entry.label
-											} else if (typeof entry.label === 'object') {
-												newLabel.innerHTML = Math.round(100 * entry.confidence) + "% " + Object.values(entry.label).map(value => value).join(", ")
-											} else {
-												newLabel.innerHTML = Math.round(100 * entry.confidence) + "% " + entry.label
-											}
-
-											document.getElementsByClassName('Labels')[0].appendChild(newLabel)
-										})
+										newLabels.push(entry)
 									})
+								})
+								newLabels.sort((a, b) => b.confidence - a.confidence)
+
+								newLabels.forEach(entry => {
+									let { x0, x1, y0, y1 } = entry.coordinates
+
+									// Add New Box
+									let newBox = document.createElement("div")
+									newBox.setAttribute('class', 'NewBox')
+									newBox.style.height = y1 - y0 + "px"
+									newBox.style.left = x0 + "px"
+									newBox.style.top = y0 + "px"
+									newBox.style.width = x1 - x0 + "px"
+
+									document.getElementsByClassName('ImageDemoWrapper')[0].appendChild(newBox)
+
+									// Add Labels
+									let newLabel = document.createElement("div")
+									newLabel.setAttribute('class', 'NewLabel')
+
+									if (typeof entry.label === 'object') {
+										newLabel.innerHTML = Math.round(100 * entry.confidence) + "% " + Object.values(entry.label).map(value => value).join(", ")
+									} else {
+										newLabel.innerHTML = Math.round(100 * entry.confidence) + "% " + entry.label
+									}
+
+									document.getElementsByClassName('Labels')[0].appendChild(newLabel)
+								})
 							}
 						})   
 				}, false)
