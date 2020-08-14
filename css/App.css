@@ -3,9 +3,10 @@ body {
 }
 
 html {
+	background: #222;
+	color: #222;
 	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
 		'Droid Sans', 'Helvetica Neue', sans-serif;
-	/* font-family: 'Roboto', sans-serif; */
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	font-size: 18px;
@@ -14,13 +15,12 @@ html {
 	overflow-y: scroll;
 	scroll-behavior: smooth;
 	scroll-snap-type: y mandatory;
-
 	width: 100vw;
 }
-/* 
-#ScrollSnap {
+
+.Page {
+	height: calc(100vh - 4vw);
+	padding: 2vw;
 	position: relative;
-	height: 100vh;
-	max-height: 100vh;
-	scroll-snap-type: y mandatory;
-} */
+	width: 96vw;
+}

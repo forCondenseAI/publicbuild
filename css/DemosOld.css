@@ -1,0 +1,115 @@
+.DemoVideo, .DemoImage, .DemoText {
+	height: 100vh;
+	scroll-snap-align: center;
+}
+
+#Demos .FlexBox {
+	align-content: center;
+	align-items: baseline;
+	display: flex;
+	flex-wrap: wrap;
+	height: 100vh;
+	justify-content: space-evenly;
+	margin: auto;
+	max-width: 1199px;
+	width: 100vw;
+}
+
+#Demos .FlexBox .ChooseFile {
+	margin-bottom: 20px;
+}
+
+#Demos .FlexBox .Content {
+	width: 400px;
+}
+
+#Demos .FlexBox .Description {
+	font-size: 16px;
+	line-height: 24px;
+	margin-bottom: 20px;
+}
+
+#Demos .FlexBox .GetStarted {
+	border: 1px solid black;
+	color: black;
+	font-size: 16px;
+	margin-top: 40px;
+	padding: 4px 6px;
+	text-decoration: none;
+	width: fit-content;
+	width: -moz-fit-content;
+}
+
+#Demos .FlexBox .ImageUpload {
+	display: block;
+}
+
+#Demos .FlexBox img {
+	margin-bottom: 20px;
+	width: 400px;
+}
+
+#Demos .FlexBox .TextBox {
+	border: 1px solid black;
+	font-size: 18px;
+	height: 40px;
+	padding-left: 4px;
+	margin-bottom: 20px;
+	margin-top: 10px;
+	width: 400px;
+}
+
+#Demos .FlexBox .TextBoxSubmit {
+	display: block;
+}
+
+#Demos .Service {
+	font-size: 24px;
+	margin-bottom: 20px;
+}
+
+#Demos .Title {
+	font-size: 22px;
+	font-weight: 400;
+	margin-bottom: 20px;
+}
+
+#Demos .Type {
+	font-size: 22px;
+	font-weight: 400;
+	margin-bottom: 8px;
+}
+
+#Demos .ImageDemoWrapper {
+	position: relative;
+}
+
+#Demos .NewBox {
+	border: 1px solid red;
+	position: absolute;
+}
+
+#Demos .NewLabel {
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 32px;
+	text-transform: capitalize;
+}
+
+#Demos .Labels {
+	box-shadow: rgba(0, 0, 0, 0.16) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px, rgba(0, 0, 0, 0.2) 0px 3px 1px -2px;
+	height: 407px;
+	margin-bottom: 20px;
+	margin-top: 46px;
+	overflow-y: scroll;
+	padding: 10px;
+	width: 380px;
+}
+
+#Demos img {
+	box-shadow: rgba(0, 0, 0, 0.16) 0px 6px 10px 0px, rgba(0, 0, 0, 0.12) 0px 1px 18px 0px, rgba(0, 0, 0, 0.4) 0px 3px 5px -1px
+}
+
+#Demos .DemoImage .FlexBox {
+	align-items: flex-start;
+}

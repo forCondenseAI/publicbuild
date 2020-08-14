@@ -1,4 +1,4 @@
-.Applications {
+.Management {
 	background: white;
 	box-shadow: 0.5vw 0.5vw 1vw rgba(0, 0, 0, 0.48), -0.5vw -0.5vw 1vw rgba(0, 0, 0, 0.48);
 	height: calc(100vh - 4vw);
@@ -8,35 +8,41 @@
 	z-index: 1;
 }
 
-.Applications canvas {
+.Management canvas {
 	position: absolute;
-	left: 22vw;
+	left: -27.5vw;
 	top: 0;
 }
 
-.Applications .Content {
+.Management .Content {
 	background: white;
 	position: absolute;
-	left: 27.5%;
+	left: 80%;
 	transform: translate(-50%, -50%);
 	top: 50%;
 	width: fit-content;
 	z-index: 1;
 }
 
-.Applications  .Content .Application {
-	font-size: 16px;
-	margin: 12px 0;
+.Management .Goal {
+	font-size: 18px;
+	font-weight: 400;
+	margin-bottom: 6px;
+}
+
+.Management .Stage {
+	background: white;
+	margin-top: 30px;
 	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+	width: 300px;
 }
 
-.Applications .Content .Industries {
-	margin-bottom: 30px;
+.Management .Stage .Step {
+	font-size: 16px;
+	margin-bottom: 6px;
 }
 
-.Applications .Content .Title {
+.Management .Title {
 	font-size: 32px;
-	font-weight: 300;
-	margin-bottom: 30px;
 	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.24);
 }

@@ -1,0 +1,57 @@
+.Expertise {
+	background: white;
+	box-shadow: 0.5vw 0.5vw 1vw rgba(0, 0, 0, 0.48), -0.5vw -0.5vw 1vw rgba(0, 0, 0, 0.48);
+	height: calc(100vh - 4vw);
+	overflow: hidden;
+	scroll-snap-align: center;
+	width: 96vw;
+	z-index: 1;
+}
+
+.Expertise canvas {
+	position: absolute;
+	left: -14vw;
+	top: 0;
+}
+
+.Expertise .Content {
+	background: white;
+	position: absolute;
+	left: 75%;
+	transform: translate(-50%, -50%);
+	top: 50%;
+	width: fit-content;
+	z-index: 1;
+}
+
+.Expertise .Title {
+	font-size: 32px;
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.24);
+}
+
+.Expertise .Service {
+	font-size: 16px;
+	margin-top: 30px;
+	width: fit-content;
+}
+
+.Expertise .Service .Type {
+	font-size: 18px;
+	font-weight: 400;
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.Expertise .Service .Description {
+	color: #38398e;
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 18px;
+	margin: 7px 0;
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+	white-space: pre-line;
+}
+
+.Expertise .Service .Example {
+	margin-bottom: 5px;
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+}

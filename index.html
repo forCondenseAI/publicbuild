@@ -5,15 +5,45 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<title>Condense AI</title>
 		<link rel="stylesheet" type="text/css" href="css/App.css" />
-		<link rel="stylesheet" type="text/css" href="css/Demos.css" />
-		<link rel="stylesheet" type="text/css" href="css/NavBar.css" />
-		<link rel="stylesheet" type="text/css" href="css/Landing.css" />
-		<link rel="stylesheet" type="text/css" href="css/WhatWeDo.css" />
 		<link rel="stylesheet" type="text/css" href="css/Applications.css" />
-		<link rel="stylesheet" type="text/css" href="css/ProjectManagement.css" />
-		<link rel="stylesheet" type="text/css" href="css/TechnologySolutions.css" />
 		<link rel="stylesheet" type="text/css" href="css/Contact.css" />
+		<link rel="stylesheet" type="text/css" href="css/Expertise.css" />
+		<link rel="stylesheet" type="text/css" href="css/Demos.css" />
+		<link rel="stylesheet" type="text/css" href="css/Landing.css" />
+		<link rel="stylesheet" type="text/css" href="css/NavBar.css" />
+		<link rel="stylesheet" type="text/css" href="css/Management.css" />
 		<script src="//algorithmia.com/v1/clients/js/algorithmia-0.2.1.js" type="text/javascript"></script>
+		<script type="x-shader/x-vertex" id="vertexShader">
+			// uniform float amplitude;
+			// attribute float size;
+			uniform float amplitude;
+		
+			attribute vec3 vertexColor;
+		
+			varying vec4 varColor;
+		
+			void main()
+			{
+			varColor = vec4(vertexColor, 1.0);
+		
+			vec4 pos = vec4(position, 1.0);
+			pos.z *= amplitude;
+		
+			vec4 mvPosition = modelViewMatrix * pos;
+		
+			gl_PointSize = 1.0;
+			gl_Position = projectionMatrix * mvPosition;
+			}
+		</script>
+		
+		<script type="x-shader/x-fragment" id="fragmentShader">
+			varying vec4 varColor;
+		
+			void main()
+			{
+			gl_FragColor = varColor;
+			}
+		</script>
 		<script>
 			function handleImageDemo() {
 				// Clear Previous Labels
@@ -37,7 +67,7 @@
 					// preview.src = JSON.stringify(reader.result)
 					
 					Algorithmia.client('simXg+IFRCSOJhSTY2fs9rHrOzW1')
-						.algo('condense/object_detection/0.2.0?timeout=300')
+						.algo('condense/object_detection/0.2.1?timeout=300')
 						.pipe(reader.result.split(',')[1]) // Base64 string, after the comma
 						.then(output => {
 							console.log(output)
@@ -154,11 +184,12 @@
 				<a href="#Home">Home</a>
 				<a href="#Solutions">Solutions</a>
 				<a href="#Demos">Demos</a>
-				<a href="#Contact">Contact Us</a>
+				<a href="#Contact">Contact</a>
 			</div>
 		</div>
-			<div id="Home" class="Landing">
-				<div class="Info">
+		<div class="Page" id="Home">
+			<div class="Landing">
+				<div class="Content">
 					<div class="Header">
 						Artificial Intelligence Consultants
 					</div>
@@ -166,7 +197,9 @@
 					<a href="#Contact" class="ContactButton">Contact Us</a>
 				</div>
 			</div>
-			<div id="Solutions" class="WhatWeDo">
+		</div>
+		<div class="Page" id="Solutions">
+			<div class="Expertise">
 				<div class="Content">
 					<div class="Title">Expertise</div>
 					<div class="Service">
@@ -192,6 +225,8 @@
 					</div>
 				</div>
 			</div>
+		</div>
+		<div class="Page">
 			<div class="Applications">
 				<div class="Content">
 					<div class="Title">Applications</div>
@@ -217,16 +252,16 @@
 					</div>
 				</div>
 			</div>
-			<div class="ProjectManagement">
+		</div>
+		<div class="Page">
+			<div class="Management">
 				<div class="Content">
-					<div class="Title">Project Management</div>
+					<div class="Title">Management</div>
 					<div class="Stage">
 						<div class="Goal">Solutions Design</div>
 						<div class="Step">Problem Definition</div>
 						<div class="Step">Business Goals Selection</div>
-						<div class="Step">Application Prescription</div>
 						<div class="Step">Project Roadmap</div>
-						<div class="Step">Project Management</div>
 					</div>
 					<div class="Stage">
 						<div class="Goal">ML Operations Management</div>
@@ -245,103 +280,108 @@
 						<div class="Step">Business Logic Integration</div>
 						<div class="Step">Database Management</div>
 						<div class="Step">Cloud Infrastructure Management</div>
-						<div class="Step">Client Dashboard Development</div>
-						<div class="Step">Data Visualization</div>
+						<div class="Step">Data Visualizations and Dashboards</div>
 					</div>
 				</div>
 			</div>
+		</div>
 		<div id="Demos">
-			<div class="DemoVideo">
-				<div class="FlexBox">
-					<div class="Demo">
-						<div class="Title">Demo: Video Processing</div>
-						<img src="videos/labels.gif" alt="labelsGIF" />
-					</div>
-					<div class="Content">
-						<div class="Type">Why</div>
-						<div class="Description">
-							Whether you’re building a live streaming platform and trying to deal with liability / moderation concerns like
-							Twitch / YouTube, or you’re in the insurance Application and want to provide feedback to your customers on their
-							driving styles - being able to leverage machine learning to process video content can dramatically reduce
-							overhead and potentially unlock new revenue streams that just weren’t possible previously.
+			<div class="Page">
+				<div class="DemoVideo">
+					<div class="FlexBox">
+						<div class="Demo">
+							<div class="Title">Demo: Video Processing</div>
+							<img src="videos/labels.gif" alt="labelsGIF" />
 						</div>
-						<div class="Type">How</div>
-						<div class="Description">
-							Leveraging existing Image Classification and Detection Models, trained on ImageNet and Common Objects in Context. Along with FFMpeg we turn a video processing problem into an image processing problem.
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="DemoImage">
-				<div class="FlexBox">
-					<div class="Demo">
-						<div class="Title">Demo: Image Processing</div>
-						<div class="ImageDemoWrapper">
-							<img class="ImageUpload" src="images/car.jpg" alt="ImagePreview" />
-							<div class="NewBox" style="height: 83.7987px; left: 316.8px; top: 243.924px; width: 110.933px;"></div>
-							<div class="NewBox" style="height: 136.64px; left: 59.7333px; top: 227.911px; width: 274.133px;"></div>
-							<div class="NewBox" style="height: 155.855px; left: 154.667px; top: 211.365px; width: 76.8px;"></div>
-							<div class="NewBox" style="height: 151.051px; left: 52.8px; top: 232.715px; width: 281.6px;"></div>
-							<div class="NewBox" style="height: 64.5838px; left: 308.267px; top: 259.402px; width: 90.1333px;"></div>
-						</div>
-						<input class="ChooseFile" type="file" accept="image/*" onchange="handleImageDemo()" />
-					</div>
-					<div class="Labels">
-						<div class="NewLabel">22% Coupe, Chevrolet, Impala, 1965</div>
-						<div class="NewLabel">37% Convertible, Chevrolet, Bel Air, 1955</div>
-						<div class="NewLabel">88% person</div>
-						<div class="NewLabel">82% truck</div>
-						<div class="NewLabel">66% car</div>
-					</div>
-					<div class="Content">
-						<div class="Type">Why</div>
-						<div class="Description">
-							The bread and butter application for AI, from detection emotional response to stimuli, head counting, to
-							instagram model collaboration scoring - we have the tools and expertise to help you refine your business
-							objectives and help realise ROI.
-						</div>
-					</div>
-					<div class="Content">
-						<div class="Type">How</div>
-						<div class="Description">
-							This algorithm leverages several state-of-the-art object detection models trained on a variety of datasets such as: Common Objects In Context, ImageNet, ALPR, and a variety of proprietary data sources.
+						<div class="Content">
+							<div class="Title">Why</div>
+							<div class="Description">
+								Whether you’re building a live streaming platform and trying to deal with liability / moderation concerns like
+								Twitch / YouTube, or you’re in the insurance Application and want to provide feedback to your customers on their
+								driving styles - being able to leverage machine learning to process video content can dramatically reduce
+								overhead and potentially unlock new revenue streams that just weren’t possible previously.
+							</div>
+							<div class="Title">How</div>
+							<div class="Description">
+								Leveraging existing Image Classification and Detection Models, trained on ImageNet and Common Objects in Context. Along with FFMpeg we turn a video processing problem into an image processing problem.
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="DemoText">
-				<div class="FlexBox">
-					<div class="Demo">
-						<div class="Title">Demo: Text Processing</div>
-						<form>
-							<div>Wikipedia Page:</div>
-							<input class="TextBox" type="text" value="Space X">
-							<div>Question:</div>
-							<input class="TextBox" type="text" value="Who founded the company?">
-							<button class="TextBoxSubmit" type='button' onclick="handleTextDemo()">Submit</button>
-						</form>
-					</div>
-					<div class="Content">
-						<div class="Type">Why</div>
-						<div class="Description">
-							Being able to automatically communicate with humans, and to understand what they’re saying is quite powerful.
-							Named Entity Recognition can tell you what someone is asking for (chat bots, support centers) where question
-							answering systems can help automate your support management, they can even help digest legal documents and
-							distill them into things for mere mortals.
+			<div class="Page">
+				<div class="DemoImage">
+					<div class="FlexBox">
+						<div class="Demo">
+							<div class="Title">Demo: Image Processing</div>
+							<div class="ImageDemoWrapper">
+								<img class="ImageUpload" src="images/car.jpg" alt="ImagePreview" />
+								<div class="NewBox" style="height: 83.7987px; left: 316.8px; top: 243.924px; width: 110.933px;"></div>
+								<div class="NewBox" style="height: 136.64px; left: 59.7333px; top: 227.911px; width: 274.133px;"></div>
+								<div class="NewBox" style="height: 155.855px; left: 154.667px; top: 211.365px; width: 76.8px;"></div>
+								<div class="NewBox" style="height: 151.051px; left: 52.8px; top: 232.715px; width: 281.6px;"></div>
+								<div class="NewBox" style="height: 64.5838px; left: 308.267px; top: 259.402px; width: 90.1333px;"></div>
+							</div>
+							<input class="ChooseFile" type="file" accept="image/*" onchange="handleImageDemo()" />
 						</div>
-						<div class="Type">How</div>
-						<div class="Description">
-							Leveraging SpacyIO’s Natural Language processing packages, we’re able to leverage pretrained NLP transformer models (simliar to GPT-X) to be able to gather information automatically from natural language. This kind of system is a necessary first step for any chatbot / human - machine interface.
+						<div class="Labels">
+							<div class="NewLabel">88% person</div>
+							<div class="NewLabel">82% truck</div>
+							<div class="NewLabel">66% car</div>
+							<div class="NewLabel">37% Convertible, Chevrolet, Bel Air, 1955</div>
+							<div class="NewLabel">22% Coupe, Chevrolet, Impala, 1965</div>
+						</div>
+						<div class="Content">
+							<div class="Title">Why</div>
+							<div class="Description">
+								The bread and butter application for AI, from detection emotional response to stimuli, head counting, to
+								instagram model collaboration scoring - we have the tools and expertise to help you refine your business
+								objectives and help realise ROI.
+							</div>
+						</div>
+						<div class="Content">
+							<div class="Title">How</div>
+							<div class="Description">
+								This algorithm leverages several state-of-the-art object detection models trained on a variety of datasets such as: Common Objects In Context, ImageNet, ALPR, and a variety of proprietary data sources.
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="Page">
+				<div class="DemoText">
+					<div class="FlexBox">
+						<div class="Demo">
+							<div class="Title">Demo: Text Processing</div>
+							<form>
+								<div>Wikipedia Page:</div>
+								<input class="TextBox" type="text" value="Space X">
+								<div>Question:</div>
+								<input class="TextBox" type="text" value="Who founded the company?">
+								<button class="TextBoxSubmit" type='button' onclick="handleTextDemo()">Submit</button>
+							</form>
+						</div>
+						<div class="Content">
+							<div class="Title">Why</div>
+							<div class="Description">
+								Being able to automatically communicate with humans, and to understand what they’re saying is quite powerful.
+								Named Entity Recognition can tell you what someone is asking for (chat bots, support centers) where question
+								answering systems can help automate your support management, they can even help digest legal documents and
+								distill them into things for mere mortals.
+							</div>
+							<div class="Title">How</div>
+							<div class="Description">
+								Leveraging SpacyIO’s Natural Language processing packages, we’re able to leverage pretrained NLP transformer models (simliar to GPT-X) to be able to gather information automatically from natural language. This kind of system is a necessary first step for any chatbot / human - machine interface.
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		<div id="Contact" class="Contact">
-			<div class="Content">
-				<div class="Title">Ready to Connect?</div>
-				<div class="Email">contact@condenseai.com</div>
+		<div class="Page" id="Contact">
+			<div class="Contact">
+					<div>contact@condenseai.com</div>
 			</div>
 		</div>
-	<script type="text/javascript" src="scripts/index.3d9378d9fb75635a3c1f.js"></script></body>
+	<script type="text/javascript" src="scripts/index.3c6125c4a8b4692871e3.js"></script></body>
 </html>

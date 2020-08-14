@@ -1,50 +1,57 @@
 .Landing {
-	height: 100vh;
-	max-width: 100vw;
+	background: white;
+	box-shadow: 0.5vw 0.5vw 1vw rgba(0, 0, 0, 0.48), -0.5vw -0.5vw 1vw rgba(0, 0, 0, 0.48);
+	height: calc(100vh - 4vw);
 	overflow: hidden;
 	scroll-snap-align: center;
-	width: 100vw;
+	width: 96vw;
 	z-index: 1;
 }
 
 .Landing canvas {
 	position: absolute;
 	left: 15vw;
+	top: 0;
 }
 
-.Landing .Info {
+.Landing .Content {
 	background: white;
-	margin-top: 65vh;
+	bottom: 16vh;
 	padding: 10px 4vw;
 	position: absolute;
 	z-index: 2;
 }
 
-.Landing .Info .ContactButton {
+.Landing .Content .ContactButton {
 	border: 1px solid black;
+	box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.16);
 	color: black;
 	font-size: 16px;
 	font-weight: 300;
 	padding: 4px 6px;
 	text-decoration: none;
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.16);
+	transition: box-shadow 0.175s;
 	width: fit-content;
 	width: -moz-fit-content;
 }
 
-.Landing .Info .ContactButton:hover {
+.Landing .Content .ContactButton:hover {
 	cursor: pointer;
 }
 
-.Landing .Info .Header {
+.Landing .Content .Header {
 	font-size: 40px;
 	font-weight: 300;
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.24);
 }
 
-.Landing .Info .SubHeader {	
+.Landing .Content .SubHeader {	
 	font-size: 18px;
 	font-weight: 300;
 	padding-top: 4px;
 	margin-bottom: 12px;
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.16);
 }
 
 
@@ -55,15 +62,15 @@
 }
 
 @media only screen and (max-width: 600px) {
-	.Landing .Info {
+	.Landing .Content {
 		width: 92vw;
 	}
 
-	.Landing .Info .Header {
+	.Landing .Content .Header {
 		font-size: calc(6vw + 1px);
 	}
 
-	.Landing .Info .SubHeader {
+	.Landing .Content .SubHeader {
 		font-size: 16px;
 	}
 }

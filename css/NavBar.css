@@ -1,16 +1,17 @@
 .NavBar {
 	color: black;
 	height: 60px;
-	margin-left: calc(4vw - 12px);
+	margin-left: calc(6vw - 12px);
 	position: fixed;
-	top: 0;
+	top: 2vw;
 	z-index: 10;
 }
 
 .NavBar .MenuIcon {
 	float: left;
 	height: 36px;
-	padding-top: 19px;
+	padding-bottom: 5px;
+	padding-top: calc(19px + 2vw);
 	width: 50px;
 }
 
@@ -23,7 +24,6 @@
 	float: left;
 	height: 1px;
 	margin: 3px 12px 3px 12px;
-	transition: 0.2s;
 	width: 26px;
 }
 
@@ -67,6 +67,7 @@
 }
 
 .Show {
+	padding-top: 2vw;
 	overflow: auto;
 	width: fit-content;
 }
