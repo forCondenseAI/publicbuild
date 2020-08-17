@@ -13,36 +13,6 @@
 		<link rel="stylesheet" type="text/css" href="css/NavBar.css" />
 		<link rel="stylesheet" type="text/css" href="css/Management.css" />
 		<script src="//algorithmia.com/v1/clients/js/algorithmia-0.2.1.js" type="text/javascript"></script>
-		<script type="x-shader/x-vertex" id="vertexShader">
-			// uniform float amplitude;
-			// attribute float size;
-			uniform float amplitude;
-		
-			attribute vec3 vertexColor;
-		
-			varying vec4 varColor;
-		
-			void main()
-			{
-			varColor = vec4(vertexColor, 1.0);
-		
-			vec4 pos = vec4(position, 1.0);
-			pos.z *= amplitude;
-		
-			vec4 mvPosition = modelViewMatrix * pos;
-		
-			gl_PointSize = 1.0;
-			gl_Position = projectionMatrix * mvPosition;
-			}
-		</script>
-		<script type="x-shader/x-fragment" id="fragmentShader">
-			varying vec4 varColor;
-		
-			void main()
-			{
-			gl_FragColor = varColor;
-			}
-		</script>
 		<script>
 			function handleImageDemo() {
 				// Clear Previous Labels
@@ -60,16 +30,28 @@
 				let preview = document.getElementsByClassName('ImageUpload')[0]
 				const file = document.querySelector('input[type=file]').files[0]
 				const reader = new FileReader()
+				const previewImage = new Image()
 
 				reader.addEventListener("load", function () {
-					// Display Uploaded File
-					// preview.src = JSON.stringify(reader.result)
+					// Hide Exisiting Image
+					document.getElementsByClassName('ImageUpload')[0].style.display = 'none'
+
+					// Start Animation
+					previewImage.src = reader.result
+					previewImage.onload = function() {
+						startImageDemoAnimation(previewImage)
+        	}
 					
 					Algorithmia.client('simXg+IFRCSOJhSTY2fs9rHrOzW1')
 						.algo('condense/object_detection/0.2.1?timeout=300')
 						.pipe(reader.result.split(',')[1]) // Base64 string, after the comma
 						.then(output => {
 							console.log(output)
+
+							endImageDemoAnimation()
+
+							// Display Output Image
+							document.getElementsByClassName('ImageUpload')[0].style.display = 'block'
 							preview.src = reader.result.split(',')[0] + "," + output.result.image
 
 							preview.onload = function() {
@@ -306,7 +288,7 @@
 						<div class="Content">
 							<div class="Title">Why</div>
 							<div class="Description">
-								Moderating petabytes of video content? Reducing liability across live streaming platforms? Providing feedback to millions of insured drivers? Leveraging machine learning across video content dramatically reduces overhead and unlocks new revenue streams, often beyond conventional capabilities.
+								Moderating petabytes of video content? Reducing liability across live streaming platforms? Providing feedback to millions of insured drivers? Using machine learning across video content dramatically reduces overhead and unlocks new revenue streams, often beyond conventional capabilities.
 							</div>
 							<div class="Title">How</div>
 							<div class="Description">
@@ -329,7 +311,7 @@
 								<div class="NewBox" style="height: 151.051px; left: 52.8px; top: 232.715px; width: 281.6px;"></div>
 								<div class="NewBox" style="height: 64.5838px; left: 308.267px; top: 259.402px; width: 90.1333px;"></div>
 							</div>
-							<input class="ChooseFile" type="file" accept="image/*" onchange="handleImageDemo()" />
+							<input class="ChooseFile" type="file" accept="image/*" onchange="handleImageDemo()"/>
 						</div>
 						<div class="Labels">
 							<div class="NewLabel">88% person</div>
@@ -347,7 +329,7 @@
 						<div class="Content">
 							<div class="Title">How</div>
 							<div class="Description">
-								Leverage several state-of-the-art object detection models, all at the same time. These models train on a variety of datasets, including Common Objects In Context (COCO), ImageNet, Automated License Plate Readers (ALPRs), and various proprietary data sources.</div>
+								Use several state-of-the-art object detection models, all at the same time. These models train on a variety of datasets, including Common Objects In Context (COCO), ImageNet, Automated License Plate Readers (ALPRs), and various proprietary data sources.</div>
 						</div>
 					</div>
 				</div>
@@ -388,5 +370,5 @@
 					<div>contact@condenseai.com</div>
 			</div>
 		</div>
-	<script type="text/javascript" src="scripts/index.e85c8879c03693b279cd.js"></script></body>
+	<script type="text/javascript" src="scripts/index.8dacc6780f1170c045fb.js"></script></body>
 </html>
