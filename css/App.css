@@ -27,10 +27,13 @@ html {
 
 @media only screen and (max-width: 800px) {
 	html {
+		background: white;
     scroll-snap-type: none;
 	}
 	
 	.Page {
 		height: auto !important;
+		padding: 0;
+		width: 100vw;
 	}
 }

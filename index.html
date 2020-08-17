@@ -59,7 +59,6 @@
 								// Format Output Results
 								let newLabels = []
 								Object.entries(output.result).forEach(([modelName, modelLabels]) => {
-									if (modelName === 'car_make_and_model') return
 									if (modelName === 'image') return
 									
 									modelLabels.forEach(entry => {

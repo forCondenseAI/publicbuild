@@ -25,14 +25,11 @@
 
 .Landing .Content .ContactButton {
 	border: 1px solid black;
-	box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.16);
 	color: black;
 	font-size: 16px;
 	font-weight: 300;
 	padding: 4px 6px;
 	text-decoration: none;
-	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.16);
-	transition: box-shadow 0.175s;
 	width: fit-content;
 	width: -moz-fit-content;
 }
@@ -44,7 +41,6 @@
 .Landing .Content .Header {
 	font-size: 40px;
 	font-weight: 300;
-	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.24);
 }
 
 .Landing .Content .SubHeader {	
@@ -52,7 +48,6 @@
 	font-weight: 300;
 	padding-top: 4px;
 	margin-bottom: 12px;
-	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.16);
 }
 
 @media only screen and (max-width: 800px) {
@@ -62,10 +57,20 @@
 }
 
 @media only screen and (max-width: 650px) {
+	.Landing {
+		box-shadow: none;
+		height: 100vh;
+		width: 100vw;
+	}
+
+	.Landing canvas {
+		z-index: 2;
+	}
+
 	.Landing .Content {
-		box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.24), -4px -4px 8px rgba(0, 0, 0, 0.24);
-		margin-left: 2vw;
-		width: 84vw;
+		max-width: 100vw;
+		width: 100vw;
+		z-index: 3;
 	}
 	
 	.Landing .Content .Header {
