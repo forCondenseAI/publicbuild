@@ -35,7 +35,6 @@
 			gl_Position = projectionMatrix * mvPosition;
 			}
 		</script>
-		
 		<script type="x-shader/x-fragment" id="fragmentShader">
 			varying vec4 varColor;
 		
@@ -138,6 +137,13 @@
 			}
 
 			function handleTextDemo() {
+				// Clear Previous Labels
+				const previousBoxes = document.getElementsByClassName('TextOutput')
+				while (previousBoxes.length > 0) {
+					previousBoxes[0].parentNode.removeChild(previousBoxes[0])
+				}
+
+
 				const input = { 
 					wiki_page: document.getElementsByClassName('TextBox')[0].value,
 					question: document.getElementsByClassName('TextBox')[1].value
@@ -151,22 +157,26 @@
 						console.log(output)
 						if ("machine_comprehension_answer" in output.result) {
 							let newDiv = document.createElement("div")
+							newDiv.setAttribute('class', 'TextOutput')
 							newDiv.innerHTML = "Machine Comprehension Answer: " + output.result.machine_comprehension_answer
-							document.getElementsByClassName('Demo')[2].appendChild(newDiv)
+							document.getElementsByClassName('TextOutputs')[0].appendChild(newDiv)
 						}
 
 						if ("readability" in output.result) {
-							let newDiv = document.createElement("div")
-							newDiv.innerHTML = "Reading Grade Level: " + output.result.readability.grade_level.toFixed(1)
-							document.getElementsByClassName('Demo')[2].appendChild(newDiv)
+							let newDiv1 = document.createElement("div")
+							newDiv1.setAttribute('class', 'TextOutput')
+							newDiv1.innerHTML = "Reading Grade Level: " + output.result.readability.grade_level.toFixed(1)
+							document.getElementsByClassName('TextOutputs')[0].appendChild(newDiv1)
 
 							let newDiv2 = document.createElement("div")
+							newDiv2.setAttribute('class', 'TextOutput')
 							newDiv2.innerHTML = "Readability Index: " + output.result.readability.readability_index.toFixed(1)
-							document.getElementsByClassName('Demo')[2].appendChild(newDiv2)
+							document.getElementsByClassName('TextOutputs')[0].appendChild(newDiv2)
 
 							let newDiv3 = document.createElement("div")
+							newDiv3.setAttribute('class', 'TextOutput')
 							newDiv3.innerHTML = "Reading Ease: " + output.result.readability.reading_ease.toFixed(1)
-							document.getElementsByClassName('Demo')[2].appendChild(newDiv3)
+							document.getElementsByClassName('TextOutputs')[0].appendChild(newDiv3)
 						}
 					
 					})
@@ -354,6 +364,7 @@
 								<input class="TextBox" type="text" value="Who founded the company?">
 								<button class="TextBoxSubmit" type='button' onclick="handleTextDemo()">Submit</button>
 							</form>
+							<div class="TextOutputs"></div>
 						</div>
 						<div class="Content">
 							<div class="Title">Why</div>
@@ -361,7 +372,7 @@
 								Bulk processing legal documents? Interpreting millions of news articles? Automatically answering customer support questions? These systems are necessary first steps for chatbots and human-machine interfaces.</div>
 							<div class="Title">How</div>
 							<div class="Description">
-								From SpaCy to HuggingFace to GPT-X, leverage advanced natural language processing transformer models to automatically gather and categorize information. Analyzing textual datasets, even with simple off-the-shelf machine learning models, offers unique insight and can produce 24/7 automated responses.</div>
+								From SpaCy to HuggingFace to GPT-X, leverage advanced natural language processing models to automatically gather and categorize information. Analyzing textual datasets, even with simple off-the-shelf machine learning models, offers unique insight and can produce 24/7 automated responses.</div>
 						</div>
 					</div>
 				</div>
@@ -372,5 +383,5 @@
 					<div>contact@condenseai.com</div>
 			</div>
 		</div>
-	<script type="text/javascript" src="scripts/index.3c6125c4a8b4692871e3.js"></script></body>
+	<script type="text/javascript" src="scripts/index.e85c8879c03693b279cd.js"></script></body>
 </html>

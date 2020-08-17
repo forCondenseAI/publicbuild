@@ -1,13 +1,14 @@
 .Contact {
 	align-items: center;
-	background: white;
-	box-shadow: 0.5vw 0.5vw 1vw rgba(0, 0, 0, 0.48), -0.5vw -0.5vw 1vw rgba(0, 0, 0, 0.48);
+	color: white;
+	/* background: white; */
+	/* box-shadow: 0.5vw 0.5vw 1vw rgba(0, 0, 0, 0.48), -0.5vw -0.5vw 1vw rgba(0, 0, 0, 0.48); */
 	display: flex;
-	font-size: 20px;
-	height: calc(100vh - 4vw);
+	font-size: 24px;
+	height: 100vh;
 	justify-content: center;
 	overflow: hidden;
 	scroll-snap-align: center;
 	text-align: center;
-	width: 96vw;
+	width: 100vw;
 }
