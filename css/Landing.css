@@ -17,7 +17,8 @@
 .Landing .Content {
 	background: white;
 	bottom: 16vh;
-	padding: 10px 4vw;
+	max-width: 88vw;
+	padding: 10px 4vw 20px 4vw;
 	position: absolute;
 	z-index: 2;
 }
@@ -54,20 +55,21 @@
 	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.16);
 }
 
-
 @media only screen and (max-width: 800px) {
 	.Landing canvas {
     left: 0;
   }
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 650px) {
 	.Landing .Content {
-		width: 92vw;
+		box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.24), -4px -4px 8px rgba(0, 0, 0, 0.24);
+		margin-left: 2vw;
+		width: 84vw;
 	}
-
+	
 	.Landing .Content .Header {
-		font-size: calc(6vw + 1px);
+		font-size: calc(5.5vw + 1px);
 	}
 
 	.Landing .Content .SubHeader {

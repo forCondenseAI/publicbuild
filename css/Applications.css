@@ -40,3 +40,35 @@
 	margin-bottom: 30px;
 	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.24);
 }
+
+@media only screen and (max-width: 650px) {
+	.Applications {
+		background: none;
+		box-shadow: none;
+    height: auto;
+	}
+	
+	.Applications canvas {
+		background: white;
+		box-shadow: 0.5vw 0.5vw 1vw rgba(0, 0, 0, 0.48), -0.5vw -0.5vw 1vw rgba(0, 0, 0, 0.48);
+		left: 0;
+		margin-top: 2vw;
+		position: relative;
+	}
+
+	.Applications .Content {
+		box-shadow: 0.5vw 0.5vw 1vw rgba(0, 0, 0, 0.48), -0.5vw -0.5vw 1vw rgba(0, 0, 0, 0.48);
+		margin-bottom: 2vw;
+		padding: 8vw;
+		position: relative;
+		left: 50%;
+		transform: translate(-50%, 0);
+		top: 0;
+		width: 88vw;
+	}
+
+	.Applications .Solutions {
+		margin-left: auto;
+		width: fit-content;
+	}
+}

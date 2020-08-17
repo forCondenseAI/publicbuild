@@ -24,3 +24,13 @@ html {
 	position: relative;
 	width: 96vw;
 }
+
+@media only screen and (max-width: 800px) {
+	html {
+    scroll-snap-type: none;
+	}
+	
+	.Page {
+		height: auto !important;
+	}
+}

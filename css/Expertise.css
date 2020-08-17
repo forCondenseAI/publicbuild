@@ -55,3 +55,38 @@
 	margin-bottom: 5px;
 	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
 }
+
+@media only screen and (max-width: 800px) {
+	.Expertise {
+		background: none;
+		box-shadow: none;
+    height: auto;
+	}
+	
+	.Expertise canvas {
+		background: white;
+		box-shadow: 0.5vw 0.5vw 1vw rgba(0, 0, 0, 0.48), -0.5vw -0.5vw 1vw rgba(0, 0, 0, 0.48);
+		left: 0;
+		margin-top: 2vw;
+		position: relative;
+	}
+
+	.Expertise .Content {
+		box-shadow: 0.5vw 0.5vw 1vw rgba(0, 0, 0, 0.48), -0.5vw -0.5vw 1vw rgba(0, 0, 0, 0.48);
+		margin-bottom: 2vw;
+		padding: 8vw;
+		position: relative;
+		left: 50%;
+		transform: translate(-50%, 0);
+		top: 0;
+		width: 88vw;
+	}
+
+	.Expertise .Content .Service:nth-child(3) {
+		margin: 8vw auto;
+	}
+
+	.Expertise .Content .Service:nth-child(4) {
+		margin-left: auto;
+	}
+}
