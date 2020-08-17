@@ -75,9 +75,31 @@
 										entry.coordinates.y1 *= (preview.height / preview.naturalHeight)
 
 										newLabels.push(entry)
+
+										// Handle COCO
+										if (modelName === 'coco' && entry.car_labels !== undefined) {
+											entry.car_labels.forEach(carLabel => {
+
+												if (carLabel.confidence !== '0.00') {
+													newLabels.push({
+														confidence: Number(carLabel.confidence),
+														coordinates: entry.coordinates,
+														label: {
+															body_style: carLabel.body_style || '',
+															make: carLabel.make || '',
+															model: carLabel.model || '',
+															model_year: carLabel.model_year || ''
+														}
+													})
+												}
+											}) 
+
+										}
+
 									})
 								})
 								newLabels.sort((a, b) => b.confidence - a.confidence)
+								console.log(newLabels)
 
 								newLabels.forEach(entry => {
 									let { x0, x1, y0, y1 } = entry.coordinates
