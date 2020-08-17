@@ -39,7 +39,7 @@
 					// Start Animation
 					previewImage.src = reader.result
 					previewImage.onload = function() {
-						startImageDemoAnimation(previewImage)
+						window.startImageDemoAnimation(previewImage)
         	}
 					
 					Algorithmia.client('simXg+IFRCSOJhSTY2fs9rHrOzW1')
@@ -48,7 +48,7 @@
 						.then(output => {
 							console.log(output)
 
-							endImageDemoAnimation()
+							window.endImageDemoAnimation()
 
 							// Display Output Image
 							document.getElementsByClassName('ImageUpload')[0].style.display = 'block'
